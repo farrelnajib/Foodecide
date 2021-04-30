@@ -6,14 +6,11 @@
 //
 
 import UIKit
+import CoreData
 
 class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    let foods: [[String]] = [
-        ["Geprek Maniak", "15000, Medium, Greasy"],
-        ["Gado-gado Dago", "12000, Medium, Normal Oil"]
-    ]
-
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var foods: [Food]?
     @IBOutlet weak var menuTable: UITableView!
     
     override func viewDidLoad() {
@@ -22,6 +19,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view.
         menuTable.dataSource = self
         menuTable.delegate = self
+        reloadData()
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -33,13 +31,16 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return foods.count
+        guard let foodArray = foods else { return 0 }
+        return foodArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let food = foods![indexPath.row]
         let cell = menuTable.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
-        cell.name.text = foods[indexPath.row][0]
-        cell.detail.text = foods[indexPath.row][1]
+        
+        cell.name.text = food.name
+        cell.detail.text = "\(food.price), \(Constants.options[0][0][Int(food.size)]), \(Constants.options[1][0][Int(food.oilContent)])"
         
         return cell
     }
@@ -47,7 +48,20 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let navigationController = segue.destination as! UINavigationController
         let formViewController = navigationController.topViewController as! MenuFormViewController
+        formViewController.delegate = self
         
-        
+    }
+}
+
+extension MenuViewController: FormModalDelegate {
+    func reloadData() {
+        do {
+            self.foods = try context.fetch(Food.fetchRequest())
+            DispatchQueue.main.async {
+                self.menuTable.reloadData()
+            }
+        } catch let error as NSError {
+            print("Error, \(error), \(error.userInfo)")
+        }
     }
 }

@@ -8,12 +8,18 @@
 import UIKit
 import CoreData
 
+protocol FormModalDelegate {
+    func reloadData()
+}
+
 class MenuFormViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var newFood: Food?
+    var delegate: FormModalDelegate?
     
     @IBOutlet weak var formTable: UITableView!
-
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,7 +32,7 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
         newFood?.size = 0
         newFood?.oilContent = 0
         
-        print("Kepanggil")
+        saveButton.isEnabled = false
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,11 +50,12 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (indexPath.row == 0 || indexPath.row == 1) {
             let cell = formTable.dequeueReusableCell(withIdentifier: "inputCell", for: indexPath) as! InputTableViewCell
+            cell.delegate = self
             
             if (indexPath.row == 0) {
-                cell.setup(name: "Name", keyboardType: .default, placeholder: "Ex: Padang, Seblak")
+                cell.setup(name: "Name", keyboardType: .default, placeholder: "Ex: Padang, Seblak", index: 0)
             } else {
-                cell.setup(name: "Price", keyboardType: .numberPad, placeholder: "Ex: 15000")
+                cell.setup(name: "Price", keyboardType: .numberPad, placeholder: "Ex: 15000", index: 1)
             }
             
             return cell
@@ -70,14 +77,22 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func save(sender: UIButton) {
+        do {
+            try self.context.save()
+        } catch let error as NSError {
+            print("Error, \(error), \(error.userInfo)")
+        }
+        
+        self.dismiss(animated: true, completion: delegate?.reloadData)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let selected = formTable.indexPathForSelectedRow!.row - 2
         
         let optionVC = segue.destination as! OptionsViewController
         optionVC.index = selected
         optionVC.parentController = self
-        
-        print(String(newFood!.size))
         
         if (selected == 0) {
             optionVC.itemSelected = IndexPath(row: Int(newFood!.size), section: 0)
@@ -94,5 +109,22 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
         }
         
         formTable.reloadRows(at: [IndexPath(row: index + 2, section: 0)], with: .automatic)
+    }
+}
+
+extension MenuFormViewController: InputFieldDelegate {
+    func didChange(text: String, index: Int) {
+        guard let food = newFood else { return }
+        if (index == 0) {
+            food.name = text
+        } else {
+            if let price = Int64(text) {
+                food.price = price
+            } else {
+                food.price = 0
+            }
+        }
+        
+        saveButton.isEnabled = food.name != nil && food.name != "" && food.price != 0
     }
 }

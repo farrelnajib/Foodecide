@@ -42,6 +42,9 @@
                                                             <rect key="frame" x="152" y="0.0" width="194" height="34.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES" textContentType="name"/>
+                                                            <connections>
+                                                                <action selector="valueInputted:" destination="BEa-IO-0e4" eventType="editingChanged" id="JtK-Zf-dFI"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
@@ -117,10 +120,15 @@
                                 <action selector="modalDismissWithSender:" destination="Y6W-OH-hqX" id="pVf-fc-S8r"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="G3k-py-l8B"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="G3k-py-l8B">
+                            <connections>
+                                <action selector="saveWithSender:" destination="Y6W-OH-hqX" id="iqS-mm-Wi6"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="formTable" destination="hpJ-uw-ejI" id="RYi-Em-YCM"/>
+                        <outlet property="saveButton" destination="G3k-py-l8B" id="eGH-Li-hYi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
