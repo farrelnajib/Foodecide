@@ -49,6 +49,13 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let navigationController = segue.destination as! UINavigationController
         let formViewController = navigationController.topViewController as! MenuFormViewController
         formViewController.delegate = self
+        formViewController.context = context
+        formViewController.newFood = nil
+        
+        if (segue.identifier == "editSegue") {
+            let rowSelected = menuTable.indexPathForSelectedRow!.row
+            formViewController.newFood = foods![rowSelected]
+        }
         
     }
 }
@@ -60,6 +67,14 @@ extension MenuViewController: FormModalDelegate {
             DispatchQueue.main.async {
                 self.menuTable.reloadData()
             }
+        } catch let error as NSError {
+            print("Error, \(error), \(error.userInfo)")
+        }
+    }
+    
+    func save() {
+        do {
+            try self.context.save()
         } catch let error as NSError {
             print("Error, \(error), \(error.userInfo)")
         }

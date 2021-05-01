@@ -10,10 +10,11 @@ import CoreData
 
 protocol FormModalDelegate {
     func reloadData()
+    func save()
 }
 
 class MenuFormViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var context: NSManagedObjectContext? = nil
     var newFood: Food?
     var delegate: FormModalDelegate?
     
@@ -22,17 +23,21 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
 
         // Do any additional setup after loading the view.
         formTable.delegate = self
         formTable.dataSource = self
         
-        newFood = Food(context: self.context)
+        if newFood == nil {
+            newFood = Food(context: self.context!)
+            newFood?.size = 0
+            newFood?.oilContent = 0
+            
+            saveButton.isEnabled = false
+        }
         
-        newFood?.size = 0
-        newFood?.oilContent = 0
-        
-        saveButton.isEnabled = false
+        print(newFood)
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,9 +58,9 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
             cell.delegate = self
             
             if (indexPath.row == 0) {
-                cell.setup(name: "Name", keyboardType: .default, placeholder: "Ex: Padang, Seblak", index: 0)
+                cell.setup(name: "Name", keyboardType: .default, placeholder: "Ex: Padang, Seblak", index: 0, value: newFood!.name)
             } else {
-                cell.setup(name: "Price", keyboardType: .numberPad, placeholder: "Ex: 15000", index: 1)
+                cell.setup(name: "Price", keyboardType: .numberPad, placeholder: "Ex: 15000", index: 1, value: String(newFood!.price))
             }
             
             return cell
@@ -74,16 +79,12 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func modalDismiss(sender: UIButton) {
+        self.context?.delete(newFood!)
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func save(sender: UIButton) {
-        do {
-            try self.context.save()
-        } catch let error as NSError {
-            print("Error, \(error), \(error.userInfo)")
-        }
-        
+        delegate?.save()
         self.dismiss(animated: true, completion: delegate?.reloadData)
     }
     

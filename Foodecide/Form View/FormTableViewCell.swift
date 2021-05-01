@@ -41,11 +41,17 @@ class InputTableViewCell: FormTableViewCell, UITextFieldDelegate {
         input.delegate = self
     }
     
-    func setup(name: String, keyboardType: UIKeyboardType, placeholder: String, index: Int) {
+    func setup(name: String, keyboardType: UIKeyboardType, placeholder: String, index: Int, value: String?) {
         title.text = name
         input.keyboardType = keyboardType
         input.placeholder = placeholder
+    
         self.index = index
+        
+        if value != nil {
+            self.value = value!
+            input.text = self.value
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -55,6 +61,9 @@ class InputTableViewCell: FormTableViewCell, UITextFieldDelegate {
     
     @IBAction func valueInputted(_ sender: UITextField) {
         guard let text = input.text else { return }
+        if let inputtedValue = Int(text) {
+            input.text = "\(inputtedValue)"
+        }
         value = text
         delegate?.didChange(text: value, index: index)
     }

@@ -19,7 +19,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="y5v-HJ-v8x">
                                 <rect key="frame" x="0.0" y="88" width="390" height="673"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" id="tpW-xl-xM0" customClass="MenuTableViewCell" customModule="Foodecide" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" id="tpW-xl-xM0" customClass="MenuTableViewCell" customModule="Foodecide" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49" width="350" height="50.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpW-xl-xM0" id="buo-Dj-Suf">
@@ -60,6 +60,7 @@
                                         <connections>
                                             <outlet property="detail" destination="BFb-iy-vvB" id="Sby-uh-Sol"/>
                                             <outlet property="name" destination="6bv-JE-u1G" id="PXm-H2-Awr"/>
+                                            <segue destination="1xa-uf-bsU" kind="presentation" identifier="editSegue" id="3wo-Vr-T6Q"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -78,7 +79,7 @@
                     <navigationItem key="navigationItem" title="Menu" id="tfZ-3j-37r">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="cpR-3l-bq7">
                             <connections>
-                                <segue destination="TZm-dP-AtE" kind="presentation" id="Mac-e7-heo"/>
+                                <segue destination="TZm-dP-AtE" kind="presentation" identifier="addSegue" id="Mac-e7-heo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -98,6 +99,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jZb-R4-okT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1722" y="0.0"/>
+        </scene>
+        <!--MenuForm-->
+        <scene sceneID="yjn-Qc-Bcb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MenuForm" id="1xa-uf-bsU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1jc-dx-3aq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1730" y="185"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yxS-Ow-jQ0">
