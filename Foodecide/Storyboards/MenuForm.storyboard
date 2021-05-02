@@ -17,17 +17,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hpJ-uw-ejI">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="inputCell" id="BEa-IO-0e4" customClass="InputTableViewCell" customModule="Foodecide" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49.5" width="374" height="37"/>
+                                        <rect key="frame" x="20" y="49.5" width="374" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BEa-IO-0e4" id="XAX-Ki-dtQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="37"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="96" translatesAutoresizingMaskIntoConstraints="NO" id="3AD-A3-3oH">
-                                                    <rect key="frame" x="20" y="8" width="346" height="21"/>
+                                                    <rect key="frame" x="20" y="10" width="334" height="21"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUy-Cf-6RZ">
                                                             <rect key="frame" x="0.0" y="0.0" width="56" height="21"/>
@@ -39,7 +39,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ex: Nasi Padang, Soto" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="x9M-AL-iHd">
-                                                            <rect key="frame" x="152" y="0.0" width="194" height="21"/>
+                                                            <rect key="frame" x="152" y="0.0" width="182" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                             <connections>
@@ -50,9 +50,9 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="3AD-A3-3oH" secondAttribute="trailing" constant="8" id="5ZO-x2-0bO"/>
-                                                <constraint firstItem="3AD-A3-3oH" firstAttribute="top" secondItem="XAX-Ki-dtQ" secondAttribute="top" constant="8" id="br7-tG-rPT"/>
-                                                <constraint firstAttribute="bottom" secondItem="3AD-A3-3oH" secondAttribute="bottom" constant="8" id="iUg-V0-VAq"/>
+                                                <constraint firstAttribute="trailing" secondItem="3AD-A3-3oH" secondAttribute="trailing" constant="20" id="5ZO-x2-0bO"/>
+                                                <constraint firstItem="3AD-A3-3oH" firstAttribute="top" secondItem="XAX-Ki-dtQ" secondAttribute="top" constant="10" id="br7-tG-rPT"/>
+                                                <constraint firstAttribute="bottom" secondItem="3AD-A3-3oH" secondAttribute="bottom" constant="10" id="iUg-V0-VAq"/>
                                                 <constraint firstItem="3AD-A3-3oH" firstAttribute="leading" secondItem="XAX-Ki-dtQ" secondAttribute="leading" constant="20" id="sSD-ey-6b6"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -61,14 +61,14 @@
                                             <outlet property="title" destination="XUy-Cf-6RZ" id="XiR-vz-DYT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="selectionCell" id="hdN-0K-BEh" customClass="SelectTableViewCell" customModule="Foodecide" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="86.5" width="374" height="41"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="selectionCell" id="hdN-0K-BEh" customClass="SelectTableViewCell" customModule="Foodecide" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="90.5" width="374" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdN-0K-BEh" id="iEE-4o-k78">
                                             <rect key="frame" x="0.0" y="0.0" width="344.5" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="120" translatesAutoresizingMaskIntoConstraints="NO" id="ebM-3z-mMd">
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="90" translatesAutoresizingMaskIntoConstraints="NO" id="ebM-3z-mMd">
                                                     <rect key="frame" x="20" y="10" width="316.5" height="21"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Oil Content" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUr-kR-yz5">
@@ -81,7 +81,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob4-X7-4ab">
-                                                            <rect key="frame" x="216" y="0.0" width="100.5" height="21"/>
+                                                            <rect key="frame" x="186" y="0.0" width="130.5" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor"/>
                                                             <nil key="highlightedColor"/>
@@ -106,10 +106,9 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="hpJ-uw-ejI" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="DOS-a1-qxl"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="hpJ-uw-ejI" secondAttribute="bottom" id="him-ZQ-aNb"/>
+                            <constraint firstAttribute="bottom" secondItem="hpJ-uw-ejI" secondAttribute="bottom" id="QvH-xE-Aym"/>
+                            <constraint firstItem="hpJ-uw-ejI" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="emw-5Q-r8T"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="hpJ-uw-ejI" secondAttribute="trailing" id="no2-Yr-he8"/>
                             <constraint firstItem="hpJ-uw-ejI" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="yWt-gs-Gpk"/>
                         </constraints>
@@ -144,9 +143,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="3Tp-Lc-mmU">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="optionCell" id="paf-J1-NVC" customClass="MenuTableViewCell" customModule="Foodecide" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="optionCell" id="paf-J1-NVC" customClass="OptionTableViewCell" customModule="Foodecide" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49.5" width="374" height="50.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="paf-J1-NVC" id="mfm-9H-s1z">
@@ -193,11 +192,11 @@
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="W8e-gO-a96"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="W8e-gO-a96" firstAttribute="bottom" secondItem="3Tp-Lc-mmU" secondAttribute="bottom" id="Ah0-Mc-M7H"/>
+                            <constraint firstAttribute="bottom" secondItem="3Tp-Lc-mmU" secondAttribute="bottom" id="0ED-vz-8Nd"/>
                             <constraint firstItem="W8e-gO-a96" firstAttribute="trailing" secondItem="3Tp-Lc-mmU" secondAttribute="trailing" id="FH6-ZP-h5Y"/>
-                            <constraint firstItem="3Tp-Lc-mmU" firstAttribute="top" secondItem="W8e-gO-a96" secondAttribute="top" id="R3O-pM-Ymq"/>
+                            <constraint firstItem="3Tp-Lc-mmU" firstAttribute="top" secondItem="EBq-r7-T71" secondAttribute="top" id="J4N-Td-pRx"/>
                             <constraint firstItem="3Tp-Lc-mmU" firstAttribute="leading" secondItem="W8e-gO-a96" secondAttribute="leading" id="gfz-6I-BbT"/>
                         </constraints>
                     </view>
@@ -233,8 +232,8 @@
         <systemColor name="secondaryLabelColor">
             <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="secondarySystemBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

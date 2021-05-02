@@ -14,7 +14,7 @@ struct Constants {
             ["Gorengan", "Geprek, Gado-gado", "Padang, Warteg"]
         ],
         [
-            ["Less Oil", "Normal", "Greasy"],
+            ["Less Oil", "Normal Oil", "Greasy"],
             ["Salad, Cookies", "Martabak, Gado-Gado", "Fried Chicken, Seblak"]
         ]
     ]

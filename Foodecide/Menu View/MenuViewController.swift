@@ -21,14 +21,6 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         menuTable.delegate = self
         reloadData()
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return " "
-    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let foodArray = foods else { return 0 }
@@ -39,8 +31,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let food = foods![indexPath.row]
         let cell = menuTable.dequeueReusableCell(withIdentifier: "menuCell", for: indexPath) as! MenuTableViewCell
         
-        cell.name.text = food.name
-        cell.detail.text = "\(food.price), \(Constants.options[0][0][Int(food.size)]), \(Constants.options[1][0][Int(food.oilContent)])"
+        cell.setup(food: food)
         
         return cell
     }

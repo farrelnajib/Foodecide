@@ -17,6 +17,7 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
     var context: NSManagedObjectContext? = nil
     var newFood: Food?
     var delegate: FormModalDelegate?
+    var isNewFood: Bool = false
     
     @IBOutlet weak var formTable: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -24,6 +25,9 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
+        
+        self.title = "Edit Menu"
+        self.navigationController?.navigationBar.shadowImage = UIImage()
 
         // Do any additional setup after loading the view.
         formTable.delegate = self
@@ -34,18 +38,11 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
             newFood?.size = 0
             newFood?.oilContent = 0
             
+            isNewFood = true
             saveButton.isEnabled = false
+            
+            self.title = "New Menu"
         }
-        
-        print(newFood)
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return " "
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -79,13 +76,16 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func modalDismiss(sender: UIButton) {
-        self.context?.delete(newFood!)
+        if (isNewFood) {
+            self.context?.delete(newFood!)
+        }
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func save(sender: UIButton) {
         delegate?.save()
-        self.dismiss(animated: true, completion: delegate?.reloadData)
+        delegate?.reloadData()
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

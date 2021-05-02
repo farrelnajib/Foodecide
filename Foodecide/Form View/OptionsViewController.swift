@@ -25,21 +25,13 @@ class OptionsViewController: UIViewController, UITableViewDataSource, UITableVie
         
         self.navigationItem.title = Constants.navTitles[index!]
     }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return " "
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = optionsTable.dequeueReusableCell(withIdentifier: "optionCell", for: indexPath) as! MenuTableViewCell
+        let cell = optionsTable.dequeueReusableCell(withIdentifier: "optionCell", for: indexPath) as! OptionTableViewCell
         cell.name.text = Constants.options[index!][0][indexPath.row]
         cell.detail.text = Constants.options[index!][1][indexPath.row]
         
