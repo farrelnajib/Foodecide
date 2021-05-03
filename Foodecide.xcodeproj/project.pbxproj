@@ -10,6 +10,7 @@
 		0C150493263AFDFB0089D9CE /* Food+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C150491263AFDFB0089D9CE /* Food+CoreDataClass.swift */; };
 		0C150494263AFDFB0089D9CE /* Food+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C150492263AFDFB0089D9CE /* Food+CoreDataProperties.swift */; };
 		0C150496263B00280089D9CE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C150495263B00280089D9CE /* Constants.swift */; };
+		0C6487452640381D00CFA7F1 /* ChooseMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C6487442640381D00CFA7F1 /* ChooseMenuViewController.swift */; };
 		0C9C5D08263AEE06000A9233 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C5D07263AEE06000A9233 /* OptionsViewController.swift */; };
 		0CBA6B68263A699100C38BFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBA6B67263A699100C38BFD /* AppDelegate.swift */; };
 		0CBA6B6A263A699100C38BFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBA6B69263A699100C38BFD /* SceneDelegate.swift */; };
@@ -25,6 +26,7 @@
 		0CC0EB3A263A774A009A590A /* MenuForm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC0EB39263A774A009A590A /* MenuForm.storyboard */; };
 		0CC0EB3C263A8857009A590A /* MenuFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC0EB3B263A8857009A590A /* MenuFormViewController.swift */; };
 		0CC0EB3E263A88BB009A590A /* FormTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC0EB3D263A88BB009A590A /* FormTableViewCell.swift */; };
+		0CC5030C263FB022003276E0 /* CompareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CC5030B263FB022003276E0 /* CompareViewController.swift */; };
 		0CDA56C4263AFCA500235F9A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0CDA56C3263AFCA500235F9A /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +34,7 @@
 		0C150491263AFDFB0089D9CE /* Food+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataClass.swift"; sourceTree = "<group>"; };
 		0C150492263AFDFB0089D9CE /* Food+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Food+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0C150495263B00280089D9CE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0C6487442640381D00CFA7F1 /* ChooseMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMenuViewController.swift; sourceTree = "<group>"; };
 		0C9C5D07263AEE06000A9233 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		0CBA6B64263A699100C38BFD /* Foodecide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Foodecide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CBA6B67263A699100C38BFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +52,7 @@
 		0CC0EB39263A774A009A590A /* MenuForm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MenuForm.storyboard; sourceTree = "<group>"; };
 		0CC0EB3B263A8857009A590A /* MenuFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFormViewController.swift; sourceTree = "<group>"; };
 		0CC0EB3D263A88BB009A590A /* FormTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableViewCell.swift; sourceTree = "<group>"; };
+		0CC5030B263FB022003276E0 /* CompareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareViewController.swift; sourceTree = "<group>"; };
 		0CDA56C3263AFCA500235F9A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -64,6 +68,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C6487462640382500CFA7F1 /* Compare */ = {
+			isa = PBXGroup;
+			children = (
+				0CC5030B263FB022003276E0 /* CompareViewController.swift */,
+				0C6487442640381D00CFA7F1 /* ChooseMenuViewController.swift */,
+			);
+			path = Compare;
+			sourceTree = "<group>";
+		};
 		0C9C5D09263AFB15000A9233 /* Menu View */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +137,7 @@
 				0CBA6B70263A699100C38BFD /* Foodecide.xcdatamodeld */,
 				0C9C5D09263AFB15000A9233 /* Menu View */,
 				0C9C5D0A263AFB29000A9233 /* Form View */,
+				0C6487462640382500CFA7F1 /* Compare */,
 			);
 			path = Foodecide;
 			sourceTree = "<group>";
@@ -221,8 +235,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CC0EB3C263A8857009A590A /* MenuFormViewController.swift in Sources */,
+				0CC5030C263FB022003276E0 /* CompareViewController.swift in Sources */,
 				0CC0EB3E263A88BB009A590A /* FormTableViewCell.swift in Sources */,
 				0CBA6B72263A699100C38BFD /* Foodecide.xcdatamodeld in Sources */,
+				0C6487452640381D00CFA7F1 /* ChooseMenuViewController.swift in Sources */,
 				0C9C5D08263AEE06000A9233 /* OptionsViewController.swift in Sources */,
 				0CBA6B83263A708400C38BFD /* MenuViewController.swift in Sources */,
 				0C150493263AFDFB0089D9CE /* Food+CoreDataClass.swift in Sources */,

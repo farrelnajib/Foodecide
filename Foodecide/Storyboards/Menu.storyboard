@@ -151,7 +151,7 @@
                             <constraint firstAttribute="bottom" secondItem="y5v-HJ-v8x" secondAttribute="bottom" id="x0B-oC-ff3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Menu" image="list.bullet" catalog="system" id="cE3-Z0-Dg6"/>
+                    <tabBarItem key="tabBarItem" title="Menu" image="list.dash" catalog="system" id="57c-fZ-qQK"/>
                     <navigationItem key="navigationItem" title="Menu" id="tfZ-3j-37r">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="cpR-3l-bq7">
                             <connections>
@@ -204,7 +204,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
         <systemColor name="systemGray2Color">
             <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
