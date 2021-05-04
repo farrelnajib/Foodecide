@@ -42,11 +42,26 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
-            let foodToDelete = self.foods![indexPath.row]
-            self.context.delete(foodToDelete)
+            let alert = UIAlertController(title: "Delete", message: "Your data will be deleted permanently", preferredStyle: .actionSheet)
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { action in
+                let foodToDelete = self.foods![indexPath.row]
+                self.context.delete(foodToDelete)
+                
+                self.save()
+                do {
+                    self.foods = try self.context.fetch(Food.fetchRequest())
+                    DispatchQueue.main.async {
+                        self.menuTable.deleteRows(at: [indexPath], with: .automatic)
+                    }
+                } catch let error as NSError {
+                    print("Error, \(error), \(error.userInfo)")
+                }
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             
-            self.save()
-            self.reloadData()
+            alert.addAction(deleteAction)
+            alert.addAction(cancel)
+            self.present(alert, animated: true, completion: nil)
         }
         
         let configurations = UISwipeActionsConfiguration(actions: [deleteAction])
