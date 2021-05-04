@@ -40,7 +40,7 @@ class MenuTableViewCell: UITableViewCell {
         priceView.layer.cornerRadius = priceView.bounds.size.height / 4
         if (food.price <= 15000) {
             priceView.backgroundColor = UIColor.systemGreen
-            priceLabel.textColor = UIColor.white
+            priceLabel.textColor = UIColor.black
         } else if (food.price > 45000) {
             priceView.backgroundColor = UIColor.systemRed
             priceLabel.textColor = UIColor.white

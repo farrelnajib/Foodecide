@@ -105,11 +105,84 @@ class CompareViewController: UIViewController {
     func compare(leftFood: Food?, rightFood: Food?) {
         guard leftFood != nil,
               rightFood != nil
-        else {
-            return
+        else { return }
+        
+        guard let leftPrice = leftFood?.price,
+              let rightPrice = rightFood?.price
+        else { return }
+        
+        leftPriceLabel.text = formatMoney(price: leftPrice)
+        rightPriceLabel.text = formatMoney(price: rightPrice)
+        if (leftPrice < rightPrice) {
+            let differences = rightPrice - leftPrice
+            let percentage: Int = Int(Double(Double(differences) / Double(rightPrice)) * 100)
+            leftPriceDetailLabel.text = "+\(percentage)% cheaper"
+            
+            leftPriceDetailLabel.isHidden = false
+            rightPriceDetailLabel.isHidden = true
+        }
+        else if (leftPrice > rightPrice) {
+            let differences = leftPrice - rightPrice
+            let percentage: Int = Int(Double(Double(differences) / Double(leftPrice)) * 100)
+            rightPriceDetailLabel.text = "+\(percentage)% cheaper"
+            
+            rightPriceDetailLabel.isHidden = false
+            leftPriceDetailLabel.isHidden = true
+        } else {
+            rightPriceDetailLabel.isHidden = true
+            leftPriceDetailLabel.isHidden = true
         }
         
+        guard let leftSize = leftFood?.size,
+              let rightSize = rightFood?.size
+        else { return }
+        leftSizeLabel.text = Constants.options[0][0][Int(leftSize)]
+        rightSizeLabel.text = Constants.options[0][0][Int(rightSize)]
+        
+        if (leftSize < rightSize) {
+            rightSizeDetailLabel.text = "Bigger, more satisfying"
+            rightSizeDetailLabel.isHidden = false
+            leftSizeDetailLabel.isHidden = true
+        }
+        else if (leftSize > rightSize) {
+            leftSizeDetailLabel.text = "Bigger, more satisfying"
+            rightSizeDetailLabel.isHidden = true
+            leftSizeDetailLabel.isHidden = false
+        } else {
+            rightSizeDetailLabel.isHidden = true
+            leftSizeDetailLabel.isHidden = true
+        }
+        
+        guard let leftOil = leftFood?.oilContent,
+              let rightOil = rightFood?.oilContent
+        else { return }
+        leftOilLabel.text = Constants.options[1][0][Int(leftOil)]
+        rightOilLabel.text = Constants.options[1][0][Int(rightOil)]
+        
+        if (leftOil < rightOil) {
+            leftOilDetailLabel.text = "Less oil, more healthy"
+            rightOilDetailLabel.isHidden = true
+            leftOilDetailLabel.isHidden = false
+        }
+        else if (leftOil > rightOil) {
+            rightOilDetailLabel.text = "Less oil, more healthy"
+            rightOilDetailLabel.isHidden = false
+            leftOilDetailLabel.isHidden = true
+        } else {
+            rightOilDetailLabel.isHidden = true
+            leftOilDetailLabel.isHidden = true
+        }
+        
+        
         comparisonView.isHidden = false
+    }
+    
+    func formatMoney(price: Int64) -> String {
+        let currencyFormatter = NumberFormatter()
+        currencyFormatter.usesGroupingSeparator = true
+        currencyFormatter.numberStyle = .decimal
+        currencyFormatter.locale = .current
+        return currencyFormatter.string(from: NSNumber(value: price))!
     }
 }
 

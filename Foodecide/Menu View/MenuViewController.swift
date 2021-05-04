@@ -21,6 +21,10 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         menuTable.delegate = self
         reloadData()
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let foodArray = foods else { return 0 }
@@ -34,6 +38,20 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.setup(food: food)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, completionHandler in
+            let foodToDelete = self.foods![indexPath.row]
+            self.context.delete(foodToDelete)
+            
+            self.save()
+            self.reloadData()
+        }
+        
+        let configurations = UISwipeActionsConfiguration(actions: [deleteAction])
+        configurations.performsFirstActionWithFullSwipe = true
+        return configurations
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
