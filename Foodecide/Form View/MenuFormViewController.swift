@@ -19,6 +19,11 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
     var delegate: FormModalDelegate?
     var isNewFood: Bool = false
     
+    var foodName: String = ""
+    var foodPrice: Int64 = 0
+    var foodSize: Int64 = 0
+    var foodOilContent: Int64 = 0
+    
     @IBOutlet weak var formTable: UITableView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -34,10 +39,6 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
         formTable.dataSource = self
         
         if newFood == nil {
-            newFood = Food(context: self.context!)
-            newFood?.size = 0
-            newFood?.oilContent = 0
-            
             isNewFood = true
             saveButton.isEnabled = false
             
@@ -55,9 +56,9 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
             cell.delegate = self
             
             if (indexPath.row == 0) {
-                cell.setup(name: "Name", keyboardType: .default, placeholder: "Ex: Padang, Seblak", index: 0, value: newFood!.name)
+                cell.setup(name: "Name", keyboardType: .default, placeholder: "Ex: Padang, Seblak", index: 0, value: foodName)
             } else {
-                cell.setup(name: "Price", keyboardType: .numberPad, placeholder: "Ex: 15000", index: 1, value: String(newFood!.price))
+                cell.setup(name: "Price", keyboardType: .numberPad, placeholder: "Ex: 15000", index: 1, value: foodPrice > 0 ? String(foodPrice) : "")
             }
             
             return cell
@@ -66,9 +67,9 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = formTable.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath) as! SelectTableViewCell
             
             if (indexPath.row == 2) {
-                cell.setup(name: "Size", index: indexPath.row - 2, selected: Int(newFood!.size))
+                cell.setup(name: "Size", index: indexPath.row - 2, selected: Int(foodSize))
             } else {
-                cell.setup(name: "Oil Content", index: indexPath.row - 2, selected: Int(newFood!.oilContent))
+                cell.setup(name: "Oil Content", index: indexPath.row - 2, selected: Int(foodOilContent))
             }
             
             return cell
@@ -76,13 +77,18 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @IBAction func modalDismiss(sender: UIButton) {
-        if (isNewFood) {
-            self.context?.delete(newFood!)
-        }
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func save(sender: UIButton) {
+        if isNewFood {
+            newFood = Food(context: self.context!)
+        }
+        newFood?.name = foodName
+        newFood?.price = foodPrice
+        newFood?.size = foodSize
+        newFood?.oilContent = foodOilContent
+        
         delegate?.save()
         delegate?.reloadData()
         self.dismiss(animated: true, completion: nil)
@@ -96,17 +102,17 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
         optionVC.parentController = self
         
         if (selected == 0) {
-            optionVC.itemSelected = IndexPath(row: Int(newFood!.size), section: 0)
+            optionVC.itemSelected = IndexPath(row: Int(foodSize), section: 0)
         } else {
-            optionVC.itemSelected = IndexPath(row: Int(newFood!.oilContent), section: 0)
+            optionVC.itemSelected = IndexPath(row: Int(foodOilContent), section: 0)
         }
     }
     
     func changeOption(index: Int, value: Int) {
         if (index == 0) {
-            newFood!.size = Int64(value)
+            foodSize = Int64(value)
         } else {
-            newFood!.oilContent = Int64(value)
+            foodOilContent = Int64(value)
         }
         
         formTable.reloadRows(at: [IndexPath(row: index + 2, section: 0)], with: .automatic)
@@ -115,17 +121,16 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
 
 extension MenuFormViewController: InputFieldDelegate {
     func didChange(text: String, index: Int) {
-        guard let food = newFood else { return }
         if (index == 0) {
-            food.name = text
+            foodName = text
         } else {
             if let price = Int64(text) {
-                food.price = price
+                foodPrice = price
             } else {
-                food.price = 0
+                foodPrice = 0
             }
         }
         
-        saveButton.isEnabled = food.name != nil && food.name != "" && food.price != 0
+        saveButton.isEnabled = foodName != "" && foodPrice != 0
     }
 }

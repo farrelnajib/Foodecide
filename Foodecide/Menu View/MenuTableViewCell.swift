@@ -20,6 +20,8 @@ class MenuTableViewCell: UITableViewCell {
     @IBOutlet weak var oilContentLabel: UILabel!
     @IBOutlet weak var oilContentView: UIView!
     
+    let color = UIColor(red: 6/255, green: 21/255, blue: 42/255, alpha: 1)
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,7 +42,7 @@ class MenuTableViewCell: UITableViewCell {
         priceView.layer.cornerRadius = priceView.bounds.size.height / 4
         if (food.price <= 15000) {
             priceView.backgroundColor = UIColor.systemGreen
-            priceLabel.textColor = UIColor.black
+            priceLabel.textColor = color
         } else if (food.price > 45000) {
             priceView.backgroundColor = UIColor.systemRed
             priceLabel.textColor = UIColor.white
@@ -60,7 +62,7 @@ class MenuTableViewCell: UITableViewCell {
             sizeLabel.textColor = UIColor.white
         } else {
             sizeView.backgroundColor = UIColor.systemGreen
-            sizeLabel.textColor = UIColor.black
+            sizeLabel.textColor = color
         }
         
         oilContentLabel.text = Constants.options[1][0][Int(food.oilContent)]
@@ -74,7 +76,7 @@ class MenuTableViewCell: UITableViewCell {
             oilContentLabel.textColor = UIColor.white
         } else {
             oilContentView.backgroundColor = UIColor.systemGreen
-            oilContentLabel.textColor = UIColor.black
+            oilContentLabel.textColor = color
         }
     }
 }
