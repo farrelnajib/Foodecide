@@ -56,9 +56,12 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
             cell.delegate = self
             
             if (indexPath.row == 0) {
-                cell.setup(name: "Name", keyboardType: .default, placeholder: "Ex: Padang, Seblak", index: 0, value: foodName)
+                let name = newFood != nil ? newFood!.name : foodName
+                cell.setup(name: "Name", keyboardType: .default, placeholder: "Ex: Padang, Seblak", index: 0, value: name)
             } else {
-                cell.setup(name: "Price", keyboardType: .numberPad, placeholder: "Ex: 15000", index: 1, value: foodPrice > 0 ? String(foodPrice) : "")
+                let priceString = foodPrice > 0 ? String(foodPrice) : ""
+                let price = newFood != nil ? String(newFood!.price) : priceString
+                cell.setup(name: "Price", keyboardType: .numberPad, placeholder: "Ex: 15000", index: 1, value: price)
             }
             
             return cell
@@ -67,9 +70,11 @@ class MenuFormViewController: UIViewController, UITableViewDelegate, UITableView
             let cell = formTable.dequeueReusableCell(withIdentifier: "selectionCell", for: indexPath) as! SelectTableViewCell
             
             if (indexPath.row == 2) {
-                cell.setup(name: "Size", index: indexPath.row - 2, selected: Int(foodSize))
+                let value = newFood != nil ? Int(newFood!.size) : Int(foodSize)
+                cell.setup(name: "Size", index: indexPath.row - 2, selected: value)
             } else {
-                cell.setup(name: "Oil Content", index: indexPath.row - 2, selected: Int(foodOilContent))
+                let value = newFood != nil ? Int(newFood!.oilContent) : Int(foodOilContent)
+                cell.setup(name: "Oil Content", index: indexPath.row - 2, selected: value)
             }
             
             return cell

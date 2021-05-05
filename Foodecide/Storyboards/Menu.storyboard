@@ -18,6 +18,8 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="y5v-HJ-v8x">
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                                <color key="backgroundColor" red="0.054901960784313725" green="0.090196078431372548" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.027450980392156862" green="0.34509803921568627" blue="0.71764705882352942" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="menuCell" rowHeight="79" id="tpW-xl-xM0" customClass="MenuTableViewCell" customModule="Foodecide" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49" width="350" height="79"/>
@@ -129,6 +131,7 @@
                                                 <constraint firstItem="6bv-JE-u1G" firstAttribute="top" secondItem="buo-Dj-Suf" secondAttribute="top" constant="15" id="oH5-xA-Urz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.0039215686274509803" green="0.098039215686274508" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="name" destination="6bv-JE-u1G" id="PXm-H2-Awr"/>
                                             <outlet property="oilContentLabel" destination="yfB-w6-Ijm" id="arC-qW-2fL"/>
