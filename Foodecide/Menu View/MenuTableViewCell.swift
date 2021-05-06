@@ -20,7 +20,7 @@ class MenuTableViewCell: UITableViewCell {
     @IBOutlet weak var oilContentLabel: UILabel!
     @IBOutlet weak var oilContentView: UIView!
     
-    let color = UIColor(red: 6/255, green: 21/255, blue: 42/255, alpha: 1)
+    let purple = UIColor(red: 1/255, green: 25/255, blue: 79/255, alpha: 1)
     
 
     override func awakeFromNib() {
@@ -42,13 +42,13 @@ class MenuTableViewCell: UITableViewCell {
         priceView.layer.cornerRadius = priceView.bounds.size.height / 4
         if (food.price <= 15000) {
             priceView.backgroundColor = UIColor.systemGreen
-            priceLabel.textColor = color
+            priceLabel.textColor = purple
         } else if (food.price > 45000) {
             priceView.backgroundColor = UIColor.systemRed
             priceLabel.textColor = UIColor.white
         } else {
             priceView.backgroundColor = UIColor.systemOrange
-            priceLabel.textColor = UIColor.white
+            priceLabel.textColor = purple
         }
         
         sizeLabel.text = Constants.options[0][0][Int(food.size)]
@@ -59,10 +59,10 @@ class MenuTableViewCell: UITableViewCell {
             sizeLabel.textColor = UIColor.white
         } else if (food.size == 1) {
             sizeView.backgroundColor = UIColor.systemOrange
-            sizeLabel.textColor = UIColor.white
+            sizeLabel.textColor = purple
         } else {
             sizeView.backgroundColor = UIColor.systemGreen
-            sizeLabel.textColor = color
+            sizeLabel.textColor = purple
         }
         
         oilContentLabel.text = Constants.options[1][0][Int(food.oilContent)]
@@ -73,10 +73,10 @@ class MenuTableViewCell: UITableViewCell {
             oilContentLabel.textColor = UIColor.white
         } else if (food.oilContent == 1) {
             oilContentView.backgroundColor = UIColor.systemOrange
-            oilContentLabel.textColor = UIColor.white
+            oilContentLabel.textColor = purple
         } else {
             oilContentView.backgroundColor = UIColor.systemGreen
-            oilContentLabel.textColor = color
+            oilContentLabel.textColor = purple
         }
     }
 }
